@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: hsl(60, 85%, 97%);
+    --foreground: hsl(222, 84%, 4%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(222, 84%, 4%);
+    --popover: hsl(0, 0%, 100%);
+    --popover-foreground: hsl(222, 84%, 4%);
+    --primary: hsl(350, 64%, 85%);
+    --primary-foreground: hsl(210, 40%, 98%);
+    --secondary: hsl(267, 89%, 92%);
+    --secondary-foreground: hsl(222, 84%, 4%);
+    --muted: hsl(210, 40%, 96%);
+    --muted-foreground: hsl(215, 16%, 47%);
+    --accent: hsl(122, 78%, 82%);
+    --accent-foreground: hsl(222, 84%, 4%);
+    --destructive: hsl(0, 84%, 60%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+    --border: hsl(214, 32%, 91%);
+    --input: hsl(214, 32%, 91%);
+    --ring: hsl(222, 84%, 4%);
+    --radius: 0.5rem;
+    --chart-1: hsl(12, 76%, 61%);
+    --chart-2: hsl(173, 58%, 39%);
+    --chart-3: hsl(197, 37%, 24%);
+    --chart-4: hsl(43, 74%, 66%);
+    --chart-5: hsl(27, 87%, 67%);
+
+    /* Kawaii color variables */
+    --kawaii-pink: hsl(350, 64%, 85%);
+    --kawaii-lavender: hsl(267, 89%, 92%);
+    --kawaii-mint: hsl(122, 78%, 82%);
+    --kawaii-cream: hsl(60, 85%, 97%);
+    --kawaii-peach: hsl(25, 100%, 82%);
+    --kawaii-sky: hsl(197, 63%, 84%);
+  }
+
+  .dark {
+    --background: hsl(222, 84%, 4%);
+    --foreground: hsl(210, 40%, 98%);
+    --card: hsl(222, 84%, 4%);
+    --card-foreground: hsl(210, 40%, 98%);
+    --popover: hsl(222, 84%, 4%);
+    --popover-foreground: hsl(210, 40%, 98%);
+    --primary: hsl(210, 40%, 98%);
+    --primary-foreground: hsl(222, 84%, 4%);
+    --secondary: hsl(217, 33%, 18%);
+    --secondary-foreground: hsl(210, 40%, 98%);
+    --muted: hsl(217, 33%, 18%);
+    --muted-foreground: hsl(215, 20%, 65%);
+    --accent: hsl(217, 33%, 18%);
+    --accent-foreground: hsl(210, 40%, 98%);
+    --destructive: hsl(0, 63%, 31%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+    --border: hsl(217, 33%, 18%);
+    --input: hsl(217, 33%, 18%);
+    --ring: hsl(213, 27%, 84%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, var(--kawaii-cream) 0%, var(--kawaii-lavender) 100%);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .font-kawaii {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .kawaii-card {
+    @apply bg-white/90 backdrop-blur-sm border border-pink-200/30 transition-all duration-300 ease-in-out;
+  }
+
+  .kawaii-card:hover {
+    @apply -translate-y-0.5 shadow-lg shadow-pink-200/20;
+  }
+
+  .kawaii-gradient {
+    background: linear-gradient(45deg, var(--kawaii-pink), var(--kawaii-lavender));
+  }
+
+  .pulse-cute {
+    animation: pulse-cute 2s infinite;
+  }
+
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  .kawaii-button {
+    @apply px-4 py-2 rounded-full font-medium transition-opacity hover:opacity-90;
+  }
+
+  .kawaii-button-pink {
+    @apply kawaii-button text-white;
+    background: linear-gradient(45deg, var(--kawaii-pink), hsl(350, 64%, 80%));
+  }
+
+  .kawaii-button-lavender {
+    @apply kawaii-button text-white;
+    background: linear-gradient(45deg, var(--kawaii-lavender), hsl(267, 89%, 87%));
+  }
+
+  .kawaii-button-mint {
+    @apply kawaii-button text-white;
+    background: linear-gradient(45deg, var(--kawaii-mint), hsl(122, 78%, 77%));
+  }
+
+  .kawaii-button-peach {
+    @apply kawaii-button text-white;
+    background: linear-gradient(45deg, var(--kawaii-peach), hsl(25, 100%, 77%));
+  }
+
+  .kawaii-button-sky {
+    @apply kawaii-button text-white;
+    background: linear-gradient(45deg, var(--kawaii-sky), hsl(197, 63%, 79%));
+  }
+}
+
+@keyframes pulse-cute {
+  0%, 100% { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0.7; 
+  }
+}
+
+@keyframes floating {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-10px); 
+  }
+}
