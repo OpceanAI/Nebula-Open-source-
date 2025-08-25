@@ -12,11 +12,11 @@ module.exports = {
     TEST_GUILD_ID: "xxxxxxxxxxx", // Guild ID where the interactions should be registered. [** Test you commands here first **]
   },
   EMBED_COLORS: {
-    BOT_EMBED: "#068ADD",
+    BOT_EMBED: "#9F7AEA", // Kawaii purple/lilac for Nebula
     TRANSPARENT: "#36393F",
-    SUCCESS: "#00A56A",
-    ERROR: "#D61A3C",
-    WARNING: "#F7E919",
+    SUCCESS: "#68D391", // Softer pastel green
+    ERROR: "#FC8181", // Softer pastel red
+    WARNING: "#F6E05E", // Softer pastel yellow
   },
   CACHE_SIZE: {
     GUILDS: 100,
@@ -24,7 +24,7 @@ module.exports = {
     MEMBERS: 10000,
   },
   MESSAGES: {
-    API_ERROR: "Unexpected Backend Error! Try again later or contact support server",
+    API_ERROR: "🥺 *susurra tímidamente* Algo salió mal... ¿podrías intentarlo más tarde? 💭✨",
   },
 
   // PLUGINS
@@ -103,11 +103,11 @@ module.exports = {
   },
 
   PRESENCE: {
-    ENABLED: false, // Whether or not the bot should update its status
+    ENABLED: true, // Whether or not the bot should update its status
     STATUS: "online", // The bot's status [online, idle, dnd, invisible]
-    TYPE: "WATCHING", // Status type for the bot [ CUSTOM | PLAYING | LISTENING | WATCHING | COMPETING ]
+    TYPE: "CUSTOM", // Status type for the bot [ CUSTOM | PLAYING | LISTENING | WATCHING | COMPETING ]
     // Your bot status message (note: in custom status type you won't have "Playing", "Listening", "Competing" prefix)
-    MESSAGE: ["{members} members in {servers} servers"],
+    MESSAGE: ["🌙 *susurrando kawaii* uwu ✨", "💫 ayudando tímidamente~ 🥺", "🌸 siendo adorable 💭"],
   },
 
   STATS: {

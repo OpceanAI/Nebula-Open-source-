@@ -57,7 +57,7 @@ module.exports = {
     }
 
     // No matching command/category found
-    await message.safeReply("No matching command found");
+    await message.safeReply("🥺 *susurra* No encontré ese comando... ¿podrías intentar de nuevo? 🌸💭");
   },
 
   async interactionRun(interaction) {
@@ -78,7 +78,7 @@ module.exports = {
     }
 
     // No matching command/category found
-    await interaction.followUp("No matching command found");
+    await interaction.followUp("🥺 *susurra* No encontré ese comando... ¿podrías intentar de nuevo? 🌸💭");
   },
 };
 
@@ -101,7 +101,7 @@ async function getHelpMenu({ client, guild }) {
   const menuRow = new ActionRowBuilder().addComponents(
     new StringSelectMenuBuilder()
       .setCustomId("help-menu")
-      .setPlaceholder("Choose the command category")
+      .setPlaceholder("🌙 *elige una categoría...* ✨")
       .addOptions(options)
   );
 
@@ -118,11 +118,12 @@ async function getHelpMenu({ client, guild }) {
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setThumbnail(client.user.displayAvatarURL())
     .setDescription(
-      "**About Me:**\n" +
-        `Hello I am ${guild.members.me.displayName}!\n` +
-        "A cool multipurpose discord bot which can serve all your needs\n\n" +
-        `**Invite Me:** [Here](${client.getInvite()})\n` +
-        `**Support Server:** [Join](${SUPPORT_SERVER})`
+      "**✨ Sobre mí... 🥺**\n" +
+        `*susurra tímidamente* H-hola... soy ${guild.members.me.displayName} 🌙\n` +
+        "Soy un bot kawaii que puede ayudarte con muchas cositas~ uwu 💫\n" +
+        "*se esconde detrás de las estrellas* 🌸✨\n\n" +
+        `**💭 Invítame:** [Aquí](${client.getInvite()}) *si quieres...*\n` +
+        `**🌙 Servidor de apoyo:** [Únete](${SUPPORT_SERVER}) *para más ayuda~*`
     );
 
   return {

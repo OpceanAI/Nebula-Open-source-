@@ -20,9 +20,9 @@ module.exports = {
       const target = args.length > 0 ? await message.guild.resolveMember(args[0]) : message.member;
       response = target
         ? userInfo(target)
-        : "It appears that the user is either invalid or not a member of this server.";
+        : "🥺 *susurra confundida* No puedo encontrar a esa persona... ¿está en este servidor? 💭🌸";
     } catch (e) {
-      response = "It appears that the user is either invalid or not a member of this server.";
+      response = "🥺 *susurra confundida* No puedo encontrar a esa persona... ¿está en este servidor? 💭🌸";
     }
     await message.safeReply(response);
   },

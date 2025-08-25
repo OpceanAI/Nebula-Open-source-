@@ -71,14 +71,14 @@ module.exports = {
 
     //
     else if (sub === "text") {
-      if (args.length < 2) return message.channel.send("Please enter a text");
+      if (args.length < 2) return message.channel.send("🥺 *susurra tímidamente* ¿Podrías darme algo de texto para voltear? 🌸💭");
       const input = args.slice(1).join(" ");
       const response = await flipText(input);
-      await message.safeReply(response);
+      await message.safeReply(`✨ *voltea el texto mágicamente* 🌙\n\`${response}\``);
     }
 
     // else
-    else await message.safeReply("Incorrect command usage");
+    else await message.safeReply("🥺 *se confunde* Hmm... ¿cómo quieres que use este comando? Intenta 'coin' o 'text' por favor~ 💭✨");
   },
 
   async interactionRun(interaction) {
@@ -101,19 +101,20 @@ module.exports = {
     else if (sub === "text") {
       const input = interaction.options.getString("input");
       const response = await flipText(input);
-      await interaction.followUp(response);
+      await interaction.followUp(`✨ *voltea el texto mágicamente* 🌙\n\`${response}\``);
     }
   },
 };
 
 const firstEmbed = (user) =>
-  new EmbedBuilder().setColor(EMBED_COLORS.TRANSPARENT).setDescription(`${user.username}, started a coin toss`);
+  new EmbedBuilder().setColor(EMBED_COLORS.BOT_EMBED).setDescription(`🌙 *susurra* ${user.username}, vamos a lanzar una monedita~ ✨`);
 
-const secondEmbed = () => new EmbedBuilder().setDescription("The coin is in the air");
+const secondEmbed = () => new EmbedBuilder().setColor(EMBED_COLORS.BOT_EMBED).setDescription("🪙 *la moneda gira en el aire mágicamente* 💫");
 
 const resultEmbed = (toss) =>
   new EmbedBuilder()
-    .setDescription(`>> **${toss} Wins** <<`)
+    .setColor(EMBED_COLORS.BOT_EMBED)
+    .setDescription(`🎉 **${toss === "HEAD" ? "¡CARA" : "¡CRUZ"} gana!** 🥺✨\n*${toss === "HEAD" ? "uwu qué suerte~" : "ohh~ interesante"}* 🌸`)
     .setImage(toss === "HEAD" ? "https://i.imgur.com/HavOS7J.png" : "https://i.imgur.com/u1pmQMV.png");
 
 async function flipText(text) {

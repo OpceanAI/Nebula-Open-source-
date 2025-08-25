@@ -15,10 +15,32 @@ module.exports = {
   },
 
   async messageRun(message, args) {
-    await message.safeReply(`🏓 Pong : \`${Math.floor(message.client.ws.ping)}ms\``);
+    const ping = Math.floor(message.client.ws.ping);
+    let response = `🌙 *susurra tímidamente* Mi latencia es \`${ping}ms\``;
+    
+    if (ping < 100) {
+      response += ` uwu ✨ *muy rápidito* 💫`;
+    } else if (ping < 200) {
+      response += ` 🥺 *está bien...* 🌸`;
+    } else {
+      response += ` 😖 *ay no... un poquito lento* 💭`;
+    }
+    
+    await message.safeReply(response);
   },
 
   async interactionRun(interaction) {
-    await interaction.followUp(`🏓 Pong : \`${Math.floor(interaction.client.ws.ping)}ms\``);
+    const ping = Math.floor(interaction.client.ws.ping);
+    let response = `🌙 *susurra tímidamente* Mi latencia es \`${ping}ms\``;
+    
+    if (ping < 100) {
+      response += ` uwu ✨ *muy rápidito* 💫`;
+    } else if (ping < 200) {
+      response += ` 🥺 *está bien...* 🌸`;
+    } else {
+      response += ` 😖 *ay no... un poquito lento* 💭`;
+    }
+    
+    await interaction.followUp(response);
   },
 };

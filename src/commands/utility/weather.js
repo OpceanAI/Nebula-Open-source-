@@ -48,10 +48,10 @@ async function weather(place) {
   if (!response.success) return MESSAGES.API_ERROR;
 
   const json = response.data;
-  if (!json.request) return `No city found matching \`${place}\``;
+  if (!json.request) return `🥺 *susurra* No puedo encontrar esa ciudad... ¿podrías verificar el nombre? 💭🌸`;
 
   const embed = new EmbedBuilder()
-    .setTitle("Weather")
+    .setTitle("🌤️ Clima kawaii~ ✨")
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setThumbnail(json.current?.weather_icons[0])
     .addFields(
