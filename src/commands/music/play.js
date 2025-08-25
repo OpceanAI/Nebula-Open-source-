@@ -52,7 +52,7 @@ module.exports = {
  * @param {string} query
  */
 async function play({ member, guild, channel }, query) {
-  if (!member.voice.channel) return "🚫 You need to join a voice channel first";
+  if (!member.voice.channel) return "🥺 *susurra tímidamente* Necesitas unirte a un canal de voz primero~ 🌸✨";
 
   let player = guild.client.musicManager.getPlayer(guild.id);
   if (player && !guild.members.me.voice.channel) {
@@ -61,7 +61,7 @@ async function play({ member, guild, channel }, query) {
   }
 
   if (player && member.voice.channel !== guild.members.me.voice.channel) {
-    return "🚫 You must be in the same voice channel as mine";
+    return "😳 *susurra* Necesitamos estar en el mismo canal de voz para escuchar música juntos~ 🎵🌸";
   }
 
   let embed = new EmbedBuilder().setColor(EMBED_COLORS.BOT_EMBED);
@@ -71,7 +71,7 @@ async function play({ member, guild, channel }, query) {
   try {
     if (guild.client.musicManager.spotify.isSpotifyUrl(query)) {
       if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET) {
-        return "🚫 Spotify songs cannot be played. Please contact the bot owner";
+        return "🥺 *se esconde* No puedo reproducir canciones de Spotify... ¿podrías contactar a mi dueño? 💭🌸";
       }
 
       const item = await guild.client.musicManager.spotify.load(query);

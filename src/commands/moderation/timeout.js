@@ -43,11 +43,11 @@ module.exports = {
 
   async messageRun(message, args) {
     const target = await message.guild.resolveMember(args[0], true);
-    if (!target) return message.safeReply(`No user found matching ${args[0]}`);
+    if (!target) return message.safeReply(`🥺 *susurra* No puedo encontrar a esa persona... ¿estás seguro del nombre? 💭🌸`);
 
     // parse time
     const ms = ems(args[1]);
-    if (!ms) return message.safeReply("Please provide a valid duration. Example: 1d/1h/1m/1s");
+    if (!ms) return message.safeReply("🌸 *susurra confundida* Necesito una duración válida... como 1d/1h/1m/1s~ 💭✨");
 
     const reason = args.slice(2).join(" ").trim();
     const response = await timeout(message.member, target, ms, reason);
@@ -60,7 +60,7 @@ module.exports = {
     // parse time
     const duration = interaction.options.getString("duration");
     const ms = ems(duration);
-    if (!ms) return interaction.followUp("Please provide a valid duration. Example: 1d/1h/1m/1s");
+    if (!ms) return interaction.followUp("🌸 *susurra confundida* Necesito una duración válida... como 1d/1h/1m/1s~ 💭✨");
 
     const reason = interaction.options.getString("reason");
     const target = await interaction.guild.members.fetch(user.id);
@@ -71,11 +71,11 @@ module.exports = {
 };
 
 async function timeout(issuer, target, ms, reason) {
-  if (isNaN(ms)) return "Please provide a valid duration. Example: 1d/1h/1m/1s";
+  if (isNaN(ms)) return "🌸 *se confunde* Esa no es una duración válida... intenta 1d/1h/1m/1s~ 💭✨";
   const response = await timeoutTarget(issuer, target, ms, reason);
-  if (typeof response === "boolean") return `${target.user.username} is timed out!`;
-  if (response === "BOT_PERM") return `I do not have permission to timeout ${target.user.username}`;
-  else if (response === "MEMBER_PERM") return `You do not have permission to timeout ${target.user.username}`;
-  else if (response === "ALREADY_TIMEOUT") return `${target.user.username} is already timed out!`;
-  else return `Failed to timeout ${target.user.username}`;
+  if (typeof response === "boolean") return `😟 *susurra tristemente* He tenido que silenciar a ${target.user.username}... espero que reflexione~ 🌸💭`;
+  if (response === "BOT_PERM") return `🥺 *se esconde* No tengo permisos para silenciar a ${target.user.username}... ¿podrías darme los permisos? 💭✨`;
+  else if (response === "MEMBER_PERM") return `😳 *susurra nerviosamente* Tú no tienes permisos para silenciar a ${target.user.username}... 🌸💭`;
+  else if (response === "ALREADY_TIMEOUT") return `🤭 *susurra* ${target.user.username} ya está silenciado... no puedo silenciarlo más~ 🌸✨`;
+  else return `😟 *se preocupa* No pude silenciar a ${target.user.username}... algo salió mal~ 🥺🌸`;
 }

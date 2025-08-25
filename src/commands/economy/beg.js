@@ -31,32 +31,26 @@ module.exports = {
 
 async function beg(user) {
   let users = [
-    "PewDiePie",
-    "T-Series",
-    "Sans",
-    "RLX",
-    "Pro Gamer 711",
-    "Zenitsu",
-    "Jake Paul",
-    "Kaneki Ken",
-    "KSI",
-    "Naruto",
-    "Mr. Beast",
-    "Ur Mom",
-    "A Broke Person",
-    "Giyu Tomiaka",
-    "Bejing Embacy",
-    "A Random Asian Mom",
-    "Ur Step Sis",
-    "Jin Mori",
-    "Sakura (AKA Trash Can)",
-    "Hammy The Hamster",
-    "Kakashi Sensei",
-    "Minato",
-    "Tanjiro",
-    "ZHC",
-    "The IRS",
-    "Joe Mama",
+    "Una gatita kawaii",
+    "Un unicornio mágico",
+    "Un ángel generoso",
+    "Una estrellita",
+    "Un conejito tierno",
+    "Una mariposa bonita",
+    "Un hada madrina",
+    "Tu mamá uwu",
+    "Un dragón amigable",
+    "Una sirena kawaii",
+    "Un panda tierno",
+    "Un fantasmita bueno",
+    "Una nubecita",
+    "Tu abuelita",
+    "Un koala dulce",
+    "Una luciernaga",
+    "Un delfín juguetón",
+    "Una florcita",
+    "Un pingüino adorable",
+    "Una estrella fugaz",
   ];
 
   let amount = Math.floor(Math.random() * `${ECONOMY.MAX_BEG_AMOUNT}` + `${ECONOMY.MIN_BEG_AMOUNT}`);
@@ -68,8 +62,8 @@ async function beg(user) {
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setAuthor({ name: `${user.username}`, iconURL: user.displayAvatarURL() })
     .setDescription(
-      `**${users[Math.floor(Math.random() * users.length)]}** donated you **${amount}** ${ECONOMY.CURRENCY}\n` +
-        `**Updated Balance:** **${userDb.coins}** ${ECONOMY.CURRENCY}`
+      `🌸 *susurra emocionada* **${users[Math.floor(Math.random() * users.length)]}** te donó **${amount}** ${ECONOMY.CURRENCY} con mucho amor~ \n` +
+        `**Balance actualizado:** **${userDb.coins}** ${ECONOMY.CURRENCY} ✨😊`
     );
 
   return { embeds: [embed] };

@@ -31,7 +31,7 @@ module.exports = {
 
   async messageRun(message, args) {
     const betAmount = parseInt(args[0]);
-    if (isNaN(betAmount)) return message.safeReply("Bet amount needs to be a valid number input");
+    if (isNaN(betAmount)) return message.safeReply("🥺 *susurra confundida* Necesito un número válido para apostar... 💭🌸");
     const response = await gamble(message.author, betAmount);
     await message.safeReply(response);
   },
@@ -76,13 +76,13 @@ function calculateReward(amount, var1, var2, var3) {
 }
 
 async function gamble(user, betAmount) {
-  if (isNaN(betAmount)) return "Bet amount needs to be a valid number input";
-  if (betAmount < 0) return "Bet amount cannot be negative";
-  if (betAmount < 10) return "Bet amount cannot be less than 10";
+  if (isNaN(betAmount)) return "🌸 *se confunde* Eso no es un número válido... 💭✨";
+  if (betAmount < 0) return "😅 *ríe tímidamente* No puedes apostar números negativos, tontito~ 🌸✨";
+  if (betAmount < 10) return "🥺 *susurra* La apuesta mínima es 10... ¿podrías apostar un poquito más? 💭🌸";
 
   const userDb = await getUser(user);
   if (userDb.coins < betAmount)
-    return `You do not have sufficient coins to gamble!\n**Coin balance:** ${userDb.coins || 0}${ECONOMY.CURRENCY}`;
+    return `😟 *susurra tristemente* No tienes suficientes moneditas para apostar...\n**Tu balance:** ${userDb.coins || 0}${ECONOMY.CURRENCY} 🌸💭`;
 
   const slot1 = getEmoji();
   const slot2 = getEmoji();
@@ -101,7 +101,7 @@ async function gamble(user, betAmount) {
     `;
 
   const reward = calculateReward(betAmount, slot1, slot2, slot3);
-  const result = (reward > 0 ? `You won: ${reward}` : `You lost: ${betAmount}`) + ECONOMY.CURRENCY;
+  const result = (reward > 0 ? `😆 *susurra emocionada* ¡Ganaste: ${reward}` : `😟 *susurra tristemente* Perdiste: ${betAmount}`) + ECONOMY.CURRENCY;
   const balance = reward - betAmount;
 
   userDb.coins += balance;
@@ -112,7 +112,7 @@ async function gamble(user, betAmount) {
     .setColor(EMBED_COLORS.TRANSPARENT)
     .setThumbnail("https://i.pinimg.com/originals/9a/f1/4e/9af14e0ae92487516894faa9ea2c35dd.gif")
     .setDescription(str)
-    .setFooter({ text: `${result}\nUpdated Wallet balance: ${userDb?.coins}${ECONOMY.CURRENCY}` });
+    .setFooter({ text: `${result}\n🌸 Balance actualizado: ${userDb?.coins}${ECONOMY.CURRENCY} ✨` });
 
   return { embeds: [embed] };
 }

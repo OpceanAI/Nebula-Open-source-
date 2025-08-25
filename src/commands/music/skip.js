@@ -34,8 +34,8 @@ function skip({ client, guildId }) {
   const player = client.musicManager.getPlayer(guildId);
 
   // check if current song is playing
-  if (!player.queue.current) return "⏯️ There is no song currently being played";
+  if (!player.queue.current) return "🥺 *susurra* No hay ninguna canción sonando ahorita... 🌸✨";
 
   const { title } = player.queue.current;
-  return player.queue.next() ? `⏯️ ${title} was skipped.` : "⏯️ There is no song to skip.";
+  return player.queue.next() ? `⏯️ *susurra* Salté ${title}~ ¿la siguiente está bien? 🎵🌸` : "⏯️ *susurra confundida* No hay cancioncitas para saltar... uwu 🌸";
 }

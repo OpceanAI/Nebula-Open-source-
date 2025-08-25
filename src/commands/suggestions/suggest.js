@@ -37,14 +37,14 @@ module.exports = {
   async messageRun(message, args, data) {
     const suggestion = args.join(" ");
     const response = await suggest(message.member, suggestion, data.settings);
-    if (typeof response === "boolean") return message.channel.safeSend("Your suggestion has been submitted!", 5);
+    if (typeof response === "boolean") return message.channel.safeSend("🌸 *susurra emocionada* ¡Tu sugerencia fue enviada exitosamente! ✨", 5);
     else await message.safeReply(response);
   },
 
   async interactionRun(interaction, data) {
     const suggestion = interaction.options.getString("suggestion");
     const response = await suggest(interaction.member, suggestion, data.settings);
-    if (typeof response === "boolean") interaction.followUp("Your suggestion has been submitted!");
+    if (typeof response === "boolean") interaction.followUp("🌸 *susurra emocionada* ¡Tu sugerencia fue enviada exitosamente! ✨");
     else await interaction.followUp(response);
   },
 };
@@ -55,13 +55,13 @@ module.exports = {
  * @param {object} settings
  */
 async function suggest(member, suggestion, settings) {
-  if (!settings.suggestions.enabled) return "Suggestion system is disabled.";
-  if (!settings.suggestions.channel_id) return "Suggestion channel not configured!";
+  if (!settings.suggestions.enabled) return "🥺 *susurra* El sistema de sugerencias está desactivado... 💭🌸";
+  if (!settings.suggestions.channel_id) return "😟 *se preocupa* No hay un canal de sugerencias configurado... 🥺🌸";
   const channel = member.guild.channels.cache.get(settings.suggestions.channel_id);
-  if (!channel) return "Suggestion channel not found!";
+  if (!channel) return "🥺 *susurra confundida* No puedo encontrar el canal de sugerencias... ¿existe aún? 💭🌸";
 
   const embed = new EmbedBuilder()
-    .setAuthor({ name: "New Suggestion" })
+    .setAuthor({ name: "🌸 Nueva Sugerencia Kawaii ✨" })
     .setThumbnail(member.user.avatarURL())
     .setColor(SUGGESTIONS.DEFAULT_EMBED)
     .setDescription(

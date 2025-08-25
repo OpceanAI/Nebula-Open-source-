@@ -80,13 +80,13 @@ module.exports = {
       },
     });
 
-    if (!response.success) return message.safeReply("Failed to generate image");
+    if (!response.success) return message.safeReply("🥺 *susurra tristemente* No pude generar la imagen... ¿podrías intentar de nuevo? 🌸💭");
 
     const attachment = new AttachmentBuilder(response.buffer, { name: "attachment.png" });
     const embed = new EmbedBuilder()
       .setColor(EMBED_COLORS.TRANSPARENT)
       .setImage("attachment://attachment.png")
-      .setFooter({ text: `Requested by: ${message.author.username}` });
+      .setFooter({ text: `🌸 Creado con amor para: ${message.author.username} ✨` });
 
     await message.safeReply({ embeds: [embed], files: [attachment] });
   },
@@ -109,13 +109,13 @@ module.exports = {
       },
     });
 
-    if (!response.success) return interaction.followUp("Failed to generate image");
+    if (!response.success) return interaction.followUp("🥺 *susurra tristemente* No pude generar la imagen... ¿podrías intentar de nuevo? 🌸💭");
 
     const attachment = new AttachmentBuilder(response.buffer, { name: "attachment.png" });
     const embed = new EmbedBuilder()
       .setColor(EMBED_COLORS.TRANSPARENT)
       .setImage("attachment://attachment.png")
-      .setFooter({ text: `Requested by: ${author.username}` });
+      .setFooter({ text: `🌸 Creado con amor para: ${author.username} ✨` });
 
     await interaction.followUp({ embeds: [embed], files: [attachment] });
   },

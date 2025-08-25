@@ -69,10 +69,10 @@ async function getTogetherInvite(member, choice) {
   choice = choice.toLowerCase();
 
   const vc = member.voice.channel?.id;
-  if (!vc) return "You must be in a voice channel to use this command.";
+  if (!vc) return "🥺 *susurra tímidamente* Necesitas estar en un canal de voz para jugar juntos... 🌸✨";
 
   if (!discordTogether.includes(choice)) {
-    return `Invalid game.\nValid games: ${discordTogether.join(", ")}`;
+    return `🌸 *se confunde* Ese juego no existe... \n*susurra* Los juegos disponibles son: ${discordTogether.join(", ")} ✨💭`;
   }
 
   const invite = await member.client.discordTogether.createTogetherCode(vc, choice);

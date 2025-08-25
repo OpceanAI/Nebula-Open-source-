@@ -31,8 +31,8 @@ module.exports = {
  */
 function pause({ client, guildId }) {
   const player = client.musicManager.getPlayer(guildId);
-  if (player.paused) return "The player is already paused.";
+  if (player.paused) return "🥺 *susurra* La música ya está pausada... 🌸✨";
 
   player.pause(true);
-  return "⏸️ Paused the music player.";
+  return "⏸️ *susurra tímidamente* He pausado la música... ¿está bien así? 🎵🌸✨";
 }

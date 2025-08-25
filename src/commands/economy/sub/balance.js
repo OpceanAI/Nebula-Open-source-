@@ -11,17 +11,17 @@ module.exports = async (user) => {
     .setThumbnail(user.displayAvatarURL())
     .addFields(
       {
-        name: "Wallet",
+        name: "👛 Carterita",
         value: `${economy?.coins || 0}${ECONOMY.CURRENCY}`,
         inline: true,
       },
       {
-        name: "Bank",
+        name: "🏛️ Banquito",
         value: `${economy?.bank || 0}${ECONOMY.CURRENCY}`,
         inline: true,
       },
       {
-        name: "Net Worth",
+        name: "🌸 Total Kawaii",
         value: `${(economy?.coins || 0) + (economy?.bank || 0)}${ECONOMY.CURRENCY}`,
         inline: true,
       }

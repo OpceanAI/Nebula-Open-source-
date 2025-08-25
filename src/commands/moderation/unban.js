@@ -81,7 +81,7 @@ async function getMatchingBans(guild, match) {
     }
   }
 
-  if (matched.length === 0) return `No user found matching ${match}`;
+  if (matched.length === 0) return `🥺 *susurra* No encontré a nadie con ese nombre entre los baneados... 💭🌸`;
 
   const options = [];
   for (const user of matched) {
@@ -92,7 +92,7 @@ async function getMatchingBans(guild, match) {
     new StringSelectMenuBuilder().setCustomId("unban-menu").setPlaceholder("Choose a user to unban").addOptions(options)
   );
 
-  return { content: "Please select a user you wish to unban", components: [menuRow] };
+  return { content: "🌸 *susurra tímidamente* Por favor elige a quién quieres desbanear~ ✨", components: [menuRow] };
 }
 
 /**
@@ -114,12 +114,12 @@ async function waitForBan(issuer, reason, sent) {
     const user = await issuer.client.users.fetch(userId, { cache: true });
 
     const status = await unBanTarget(issuer, user, reason);
-    if (typeof status === "boolean") return sent.edit({ content: `${user.username} is un-banned!`, components: [] });
-    else return sent.edit({ content: `Failed to unban ${user.username}`, components: [] });
+    if (typeof status === "boolean") return sent.edit({ content: `😊 *susurra aliviada* He desbaneado a ${user.username}... espero que haya aprendido~ 🌸✨`, components: [] });
+    else return sent.edit({ content: `😟 *se preocupa* No pude desbanear a ${user.username}... algo salió mal~ 🥺🌸`, components: [] });
   });
 
   // collect user and unban
   collector.on("end", async (collected) => {
-    if (collected.size === 0) return sent.edit("Oops! Timed out. Try again later.");
+    if (collected.size === 0) return sent.edit("🥺 *susurra tímidamente* Se me acabó el tiempo... ¿podrías intentar otra vez? 💭🌸");
   });
 }

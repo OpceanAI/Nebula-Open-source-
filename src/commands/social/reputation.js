@@ -75,13 +75,13 @@ module.exports = {
     // give
     else if (sub === "give") {
       const target = await message.guild.resolveMember(args[1]);
-      if (!target) return message.safeReply("Please provide a valid user to give reputation to");
+      if (!target) return message.safeReply("🥺 *susurra* Necesitas mencionar a un usuario válido para darle reputación... 🌸💭");
       response = await giveReputation(message.author, target.user);
     }
 
     //
     else {
-      response = "Incorrect command usage";
+      response = "🌸 *se confunde* Uso incorrecto del comando... ¿podrías intentar de nuevo? uwu 💭";
     }
 
     await message.safeReply(response);
@@ -109,20 +109,20 @@ module.exports = {
 
 async function viewReputation(target) {
   const userData = await getUser(target);
-  if (!userData) return `${target.username} has no reputation yet`;
+  if (!userData) return `🥺 *susurra* ${target.username} aún no tiene reputación... ¿quizas debería ser más activo? 🌸✨`;
 
   const embed = new EmbedBuilder()
-    .setAuthor({ name: `Reputation for ${target.username}` })
+    .setAuthor({ name: `🌸 Reputación kawaii de ${target.username} ✨` })
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setThumbnail(target.displayAvatarURL())
     .addFields(
       {
-        name: "Given",
+        name: "🎁 Dada",
         value: userData.reputation?.given.toString(),
         inline: true,
       },
       {
-        name: "Received",
+        name: "🌸 Recibida",
         value: userData.reputation?.received.toString(),
         inline: true,
       }
@@ -132,8 +132,8 @@ async function viewReputation(target) {
 }
 
 async function giveReputation(user, target) {
-  if (target.bot) return "You cannot give reputation to bots";
-  if (target.id === user.id) return "You cannot give reputation to yourself";
+  if (target.bot) return "🥺 *susurra* No puedo darle reputación a otros bots... somos colegas uwu 🌸🤖";
+  if (target.id === user.id) return "😅 *ríe tímidamente* No puedes darte reputación a ti mismo, tontito~ 🌸✨";
 
   const userData = await getUser(user);
   if (userData && userData.reputation.timestamp) {
@@ -141,7 +141,7 @@ async function giveReputation(user, target) {
     const diff = diffHours(new Date(), lastRep);
     if (diff < 24) {
       const nextUsage = lastRep.setHours(lastRep.getHours() + 24);
-      return `You can again run this command in \`${getRemainingTime(nextUsage)}\``;
+      return `🥺 *susurra* Ya diste reputación hoy... puedes hacerlo de nuevo en \`${getRemainingTime(nextUsage)}\` 🌸✨`;
     }
   }
 
@@ -156,8 +156,8 @@ async function giveReputation(user, target) {
 
   const embed = new EmbedBuilder()
     .setColor(EMBED_COLORS.BOT_EMBED)
-    .setDescription(`${target.toString()} +1 Rep!`)
-    .setFooter({ text: `By ${user.username}` })
+    .setDescription(`🌸 *susurra emocionada* ${target.toString()} +1 Reputación kawaii! ✨`)
+    .setFooter({ text: `💕 Por ${user.username} con amor uwu` })
     .setTimestamp(Date.now());
 
   return { embeds: [embed] };

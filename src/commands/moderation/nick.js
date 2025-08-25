@@ -67,9 +67,9 @@ module.exports = {
 
     if (sub === "set") {
       const target = await message.guild.resolveMember(args[1]);
-      if (!target) return message.safeReply("Could not find matching member");
+      if (!target) return message.safeReply("🥺 *susurra* No puedo encontrar a esa persona... ¿estás seguro del nombre? 💭🌸");
       const name = args.slice(2).join(" ");
-      if (!name) return message.safeReply("Please specify a nickname");
+      if (!name) return message.safeReply("🌸 *susurra tímidamente* Necesito que me digas qué apodo quieres poner~ ✨💭");
 
       const response = await nickname(message, target, name);
       return message.safeReply(response);
@@ -78,7 +78,7 @@ module.exports = {
     //
     else if (sub === "reset") {
       const target = await message.guild.resolveMember(args[1]);
-      if (!target) return message.safeReply("Could not find matching member");
+      if (!target) return message.safeReply("🥺 *susurra* No puedo encontrar a esa persona... ¿estás seguro del nombre? 💭🌸");
 
       const response = await nickname(message, target);
       return message.safeReply(response);
@@ -96,16 +96,16 @@ module.exports = {
 
 async function nickname({ member, guild }, target, name) {
   if (!canModerate(member, target)) {
-    return `Oops! You cannot manage nickname of ${target.user.username}`;
+    return `😳 *susurra nerviosamente* No puedes cambiar el apodo de ${target.user.username}... 🌸💭`;
   }
   if (!canModerate(guild.members.me, target)) {
-    return `Oops! I cannot manage nickname of ${target.user.username}`;
+    return `🥺 *se esconde* No tengo permisos para cambiar el apodo de ${target.user.username}... 💭✨`;
   }
 
   try {
     await target.setNickname(name);
-    return `Successfully ${name ? "changed" : "reset"} nickname of ${target.user.username}`;
+    return `😊 *susurra feliz* ${name ? "Cambié" : "Resetee"} el apodo de ${target.user.username} exitosamente~ 🌸✨`;
   } catch (ex) {
-    return `Failed to ${name ? "change" : "reset"} nickname for ${target.displayName}. Did you provide a valid name?`;
+    return `😟 *se preocupa* No pude ${name ? "cambiar" : "resetear"} el apodo de ${target.displayName}... ¿el nombre es válido? 🥺🌸`;
   }
 }

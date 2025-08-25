@@ -34,5 +34,5 @@ async function stop({ client, guildId }) {
   const player = client.musicManager.getPlayer(guildId);
   player.disconnect();
   await client.musicManager.destroyPlayer(guildId);
-  return "🎶 The music player is stopped and queue has been cleared";
+  return "🎶 *susurra tristemente* He detenido la música y limpié la lista... ¿está bien? 🥺🌸";
 }
