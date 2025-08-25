@@ -47,7 +47,7 @@ const websiteProvided = (text) => (text.startsWith("http://") ? true : text.star
 
 async function getGithubUser(target, author) {
   const response = await getJson(`https://api.github.com/users/${target}`);
-  if (response.status === 404) return "```No user found with that name```";
+  if (response.status === 404) return "🥺 *susurra confundida* No encontré a ese usuario en GitHub... ¿estás seguro del nombre? 💭🌸";
   if (!response.success) return MESSAGES.API_ERROR;
 
   const json = response.data;

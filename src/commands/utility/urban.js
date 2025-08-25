@@ -47,14 +47,14 @@ async function urban(word) {
   if (!response.success) return MESSAGES.API_ERROR;
 
   const json = response.data;
-  if (!json.list[0]) return `Nothing found matching \`${word}\``;
+  if (!json.list[0]) return `🥺 *susurra tímidamente* No encontré definición para \`${word}\`... quizás intenta con otra palabra~ 💭🌸`;
 
   const data = json.list[0];
   const embed = new EmbedBuilder()
     .setTitle(data.word)
     .setURL(data.permalink)
     .setColor(EMBED_COLORS.BOT_EMBED)
-    .setDescription(`**Definition**\`\`\`css\n${data.definition}\`\`\``)
+    .setDescription(`🌸 *susurra* Encontré esta definición para ti~ \n**Definición:**\`\`\`css\n${data.definition}\`\`\``)
     .addFields(
       {
         name: "Author",

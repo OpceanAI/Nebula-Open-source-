@@ -12,17 +12,24 @@ module.exports = (user) => {
   const x1024 = user.displayAvatarURL({ extension: "png", size: 1024 });
   const x2048 = user.displayAvatarURL({ extension: "png", size: 2048 });
 
+  let kawaii_messages = [
+    `🌸 *susurra tímidamente* El avatar de ${user.username} es muy lindo~ ✨`,
+    `🥺 *se emociona* ¡Qué hermoso avatar tiene ${user.username}! uwu`,
+    `💭 *whispers* Mira qué adorable se ve ${user.username}~ 🌙`
+  ];
+  
   const embed = new EmbedBuilder()
-    .setTitle(`Avatar of ${user.username}`)
+    .setTitle(`🌙 Avatar kawaii de ${user.username} ✨`)
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setImage(x256)
     .setDescription(
-      `Links: • [x64](${x64}) ` +
+      kawaii_messages[Math.floor(Math.random() * kawaii_messages.length)] + "\n\n" +
+      `💫 **Enlaces en diferentes tamañitos:** • [x64](${x64}) ` +
         `• [x128](${x128}) ` +
         `• [x256](${x256}) ` +
         `• [x512](${x512}) ` +
         `• [x1024](${x1024}) ` +
-        `• [x2048](${x2048}) `
+        `• [x2048](${x2048}) 🌸`
     );
 
   return {

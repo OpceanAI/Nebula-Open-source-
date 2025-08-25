@@ -35,7 +35,7 @@ module.exports = {
   async messageRun(message, args) {
     const choice = args[0];
     if (!animals.includes(choice)) {
-      return message.safeReply(`Invalid animal selected. Available animals:\n${animals.join(", ")}`);
+      return message.safeReply(`🥺 *susurra tímidamente* Ese animalito no lo conozco... ¿podrías elegir uno de estos? 🌸\n${animals.join(", ")} ✨💭`);
     }
     const response = await getAnimal(message.author, choice);
     return message.safeReply(response);
@@ -53,10 +53,17 @@ async function getAnimal(user, choice) {
   if (!response.success) return MESSAGES.API_ERROR;
 
   const imageUrl = response.data?.image;
+  let kawaii_messages = [
+    "🌸 *susurra* ¡Mira qué ${choice} tan adorable! uwu ✨",
+    "💫 *se emociona tímidamente* ¿No es precioso este ${choice}? 🥺",
+    "🌙 *whispers* Este ${choice} me da mucha ternura~ 💭"
+  ];
+  
   const embed = new EmbedBuilder()
-    .setColor(EMBED_COLORS.TRANSPARENT)
+    .setColor(EMBED_COLORS.BOT_EMBED)
+    .setDescription(kawaii_messages[Math.floor(Math.random() * kawaii_messages.length)].replace('${choice}', choice))
     .setImage(imageUrl)
-    .setFooter({ text: `Requested by ${user.tag}` });
+    .setFooter({ text: `🌸 Pedido por ${user.tag} con mucho amor~ ✨` });
 
   return { embeds: [embed] };
 }

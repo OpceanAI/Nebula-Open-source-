@@ -28,21 +28,21 @@ module.exports = (client) => {
   const overallAvailable = `${(os.totalmem() / 1024 / 1024 / 1024).toFixed(2)} GB`;
   const overallUsage = `${Math.floor(((os.totalmem() - os.freemem()) / os.totalmem()) * 100)}%`;
 
-  let desc = "";
-  desc += `❒ Total guilds: ${guilds}\n`;
-  desc += `❒ Total users: ${users}\n`;
-  desc += `❒ Total channels: ${channels}\n`;
-  desc += `❒ Websocket Ping: ${client.ws.ping} ms\n`;
-  desc += "\n";
+  let desc = "🌸 *susurra tímidamente* Acá tienes mis estadistícas~ uwu \n\n";
+  desc += `🌙 Servidores kawaii: ${guilds}\n`;
+  desc += `💭 Usuarios adorables: ${users}\n`;
+  desc += `✨ Canales mágicos: ${channels}\n`;
+  desc += `💫 Ping del corazón: ${client.ws.ping} ms\n`;
+  desc += "\n*se esconde detrás de las estrellas* 🥺\n";
 
   const embed = new EmbedBuilder()
-    .setTitle("Bot Information")
+    .setTitle("🌙 Información sobre Nebula~ ✨")
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setThumbnail(client.user.displayAvatarURL())
     .setDescription(desc)
     .addFields(
       {
-        name: "CPU",
+        name: "💻 CPU (mi cerebrito)",
         value: stripIndent`
         ❯ **OS:** ${platform} [${architecture}]
         ❯ **Cores:** ${cores}
@@ -51,7 +51,7 @@ module.exports = (client) => {
         inline: true,
       },
       {
-        name: "Bot's RAM",
+        name: "🧠 RAM de Nebula",
         value: stripIndent`
         ❯ **Used:** ${botUsed}
         ❯ **Available:** ${botAvailable}
@@ -60,7 +60,7 @@ module.exports = (client) => {
         inline: true,
       },
       {
-        name: "Overall RAM",
+        name: "💫 RAM total del servidor",
         value: stripIndent`
         ❯ **Used:** ${overallUsed}
         ❯ **Available:** ${overallAvailable}
@@ -69,7 +69,7 @@ module.exports = (client) => {
         inline: true,
       },
       {
-        name: "Node Js version",
+        name: "🌸 Versión de Node.js",
         value: process.versions.node,
         inline: false,
       },

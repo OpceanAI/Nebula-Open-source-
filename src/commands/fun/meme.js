@@ -119,17 +119,17 @@ async function getRandomEmbed(choice) {
 
   const response = await getJson(`https://meme-api.com/gimme/${rand}`);
   if (!response.success || !response.data) {
-    return new EmbedBuilder().setColor(EMBED_COLORS.ERROR).setDescription("Failed to fetch meme. Try again!");
+    return new EmbedBuilder().setColor(EMBED_COLORS.ERROR).setDescription("🥺 *se esconde* No pude traerte un meme... ¿intentamos otra vez? 💭🌸");
   }
 
   const json = response.data;
   if (!json.postLink || !json.url || !json.title || !json.ups) {
-    return new EmbedBuilder().setColor(EMBED_COLORS.ERROR).setDescription(`No meme found matching ${choice}`);
+    return new EmbedBuilder().setColor(EMBED_COLORS.ERROR).setDescription(`😖 *susurra confundida* No encontré memes de ${choice}... quizás otro tema? 🥺💭`);
   }
 
   // Check if the meme is marked as NSFW
   if (json.nsfw === true) {
-    return new EmbedBuilder().setColor(EMBED_COLORS.ERROR).setDescription("This meme contains NSFW content");
+    return new EmbedBuilder().setColor(EMBED_COLORS.ERROR).setDescription("😳 *se sonroja y se tapa los ojos* Este meme es muy atrevido... mejor buscamos otro~ 🌸💭");
   }
 
   const memeUrl = json.postLink;

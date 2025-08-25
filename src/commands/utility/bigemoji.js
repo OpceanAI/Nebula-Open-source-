@@ -45,16 +45,16 @@ function getEmoji(user, emoji) {
   const custom = parseEmoji(emoji);
 
   const embed = new EmbedBuilder()
-    .setAuthor({ name: "❯ Big Emoji ❮" })
+    .setAuthor({ name: "🌸 Emoji Grande Kawaii ✨" })
     .setColor(EMBED_COLORS.BOT_EMBED)
-    .setFooter({ text: `Requested by ${user.username}` });
+    .setFooter({ text: `🌙 Emoji gigante para ${user.username} con amor~ ✨` });
 
   if (custom.id) {
     embed.setImage(`https://cdn.discordapp.com/emojis/${custom.id}.${custom.animated ? "gif" : "png"}`);
     return { embeds: [embed] };
   }
   const parsed = parse(emoji, { assetType: "png" });
-  if (!parsed[0]) return "Not a valid emoji";
+  if (!parsed[0]) return "🥺 *susurra confundida* Eso no parece ser un emoji... ¿podrías intentar con otro? 💭🌸";
 
   embed.setImage(parsed[0].url);
   return { embeds: [embed] };

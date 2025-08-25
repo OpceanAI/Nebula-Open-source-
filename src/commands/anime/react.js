@@ -36,7 +36,7 @@ module.exports = {
   async messageRun(message, args) {
     const category = args[0].toLowerCase();
     if (!choices.includes(category)) {
-      return message.safeReply(`Invalid choice: \`${category}\`.\nAvailable reactions: ${choices.join(", ")}`);
+      return message.safeReply(`🥺 *susurra* No conozco esa reacción... ¿podrías elegir una de estas? 🌸\n${choices.join(", ")} ✨💭`);
     }
 
     const embed = await genReaction(category, message.author);
@@ -68,12 +68,12 @@ const genReaction = async (category, user) => {
 
     return new EmbedBuilder()
       .setImage(imageUrl)
-      .setColor("Random")
-      .setFooter({ text: `Requested By ${user.tag}` });
+      .setColor(EMBED_COLORS.BOT_EMBED)
+      .setFooter({ text: `🌸 Reacción kawaii para ${user.tag}~ ✨` });
   } catch (ex) {
     return new EmbedBuilder()
       .setColor(EMBED_COLORS.ERROR)
-      .setDescription("Failed to fetch meme. Try again!")
-      .setFooter({ text: `Requested By ${user.tag}` });
+      .setDescription("🥺 *se esconde* No pude traerte una reacción... ¿intentamos otra vez? 💭🌸")
+      .setFooter({ text: `🌸 Para ${user.tag} con amor~ ✨` });
   }
 };

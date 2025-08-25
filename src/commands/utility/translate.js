@@ -50,13 +50,13 @@ module.exports = {
       embed
         .setColor(EMBED_COLORS.WARNING)
         .setDescription(
-          "Invalid translation code. Visit [here](https://cloud.google.com/translate/docs/languages) to see list of supported translation codes"
+          "🥺 *susurra confundida* No conozco ese idioma... ¿podrías verificar el código? [Acá tienes la lista](https://cloud.google.com/translate/docs/languages) de idiomas que sí puedo traducir~ 🌸💭"
         );
       return message.safeReply({ embeds: [embed] });
     }
 
     const input = args.join(" ");
-    if (!input) message.safeReply("Provide some valid translation text");
+    if (!input) message.safeReply("💭 *susurra tímidamente* ¿Podrías darme algo de texto para traducir? No puedo traducir el vacío~ 🥺🌸");
 
     const response = await getTranslation(message.author, input, outputCode);
     await message.safeReply(response);
@@ -72,7 +72,7 @@ module.exports = {
 
 async function getTranslation(author, input, outputCode) {
   const data = await translate(input, outputCode);
-  if (!data) return "Failed to translate your text";
+  if (!data) return "🥺 *se esconde* No pude traducir tu texto... ¿intentamos de nuevo? 💭🌸";
 
   const embed = new EmbedBuilder()
     .setAuthor({

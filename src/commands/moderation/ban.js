@@ -36,7 +36,7 @@ module.exports = {
   async messageRun(message, args) {
     const match = await message.client.resolveUsers(args[0], true);
     const target = match[0];
-    if (!target) return message.safeReply(`No user found matching ${args[0]}`);
+    if (!target) return message.safeReply(`🥺 *susurra* No puedo encontrar a esa persona... ¿estás seguro del nombre? 💭🌸`);
     const reason = message.content.split(args[0])[1].trim();
     const response = await ban(message.member, target, reason);
     await message.safeReply(response);
@@ -58,8 +58,8 @@ module.exports = {
  */
 async function ban(issuer, target, reason) {
   const response = await banTarget(issuer, target, reason);
-  if (typeof response === "boolean") return `${target.username} is banned!`;
-  if (response === "BOT_PERM") return `I do not have permission to ban ${target.username}`;
-  else if (response === "MEMBER_PERM") return `You do not have permission to ban ${target.username}`;
-  else return `Failed to ban ${target.username}`;
+  if (typeof response === "boolean") return `😢 *susurra con tristeza* He tenido que banear a ${target.username}... espero que aprenda la lección~ 🌸💭`;
+  if (response === "BOT_PERM") return `🥺 *se esconde* No tengo permisos para banear a ${target.username}... ¿podrías darme los permisos? 💭✨`;
+  else if (response === "MEMBER_PERM") return `😳 *susurra nerviosamente* Tú no tienes permisos para banear a ${target.username}... 🌸💭`;
+  else return `😟 *se preocupa* No pude banear a ${target.username}... algo salió mal~ 🥺🌸`;
 }

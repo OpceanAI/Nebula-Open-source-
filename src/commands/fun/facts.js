@@ -36,7 +36,7 @@ module.exports = {
   async messageRun(message, args) {
     const choice = args[0];
     if (!animals.includes(choice)) {
-      return message.safeReply(`Invalid animal selected. Available animals:\n${animals.join(", ")}`);
+      return message.safeReply(`🥺 *susurra* Ese animalito no lo conozco... ¿podrías elegir de estos? 🌸\n${animals.join(", ")} 💭✨`);
     }
     const response = await getFact(message.author, choice);
     return message.safeReply(response);
@@ -55,11 +55,18 @@ async function getFact(user, choice) {
 
   const fact = response.data?.fact;
   const imageUrl = response.data?.image;
+  let kawaii_intros = [
+    "🌸 *susurra con emoción* ¡Te tengo un dato curioso sobre los ${choice}! uwu",
+    "💭 *whispers* ¿Sabías esto sobre los ${choice}? Es tan interesante~ ✨",
+    "🥺 *se emociona tímidamente* Este dato sobre ${choice} me parece adorable..."
+  ];
+  
   const embed = new EmbedBuilder()
-    .setColor(EMBED_COLORS.TRANSPARENT)
+    .setColor(EMBED_COLORS.BOT_EMBED)
     .setThumbnail(imageUrl)
-    .setDescription(fact)
-    .setFooter({ text: `Requested by ${user.tag}` });
+    .setTitle(kawaii_intros[Math.floor(Math.random() * kawaii_intros.length)].replace('${choice}', choice))
+    .setDescription(`🌙 ${fact}`)
+    .setFooter({ text: `🌸 Dato kawaii para ${user.tag} con amor~ ✨` });
 
   return { embeds: [embed] };
 }
