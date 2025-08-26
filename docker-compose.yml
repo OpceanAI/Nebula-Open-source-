@@ -1,4 +1,16 @@
+version: "3.9"
 
+services:
+  discord-bot:
+    build: .
+    container_name: discord-bot
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app
   lavalink:
     image: fredboat/lavalink:dev
     container_name: discord-js-lavalink
@@ -8,7 +20,6 @@
       - discord-js-net
     volumes:
       - ./application.yml:/opt/Lavalink/application.yml:ro
-
   mongodb:
     image: mongo:latest
     container_name: discord-js-mongodb
