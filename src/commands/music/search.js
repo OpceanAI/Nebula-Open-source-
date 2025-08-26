@@ -58,7 +58,7 @@ module.exports = {
  * @param {string} query
  */
 async function search({ member, guild, channel }, query) {
-  if (!member.voice.channel) return "🚫 You need to join a voice channel first";
+  if (!member.voice.channel) return "🥺 *susurra tímidamente* Necesitas unirte a un canal de voz primero... 💭🌸";
 
   let player = guild.client.musicManager.getPlayer(guild.id);
   if (player && !guild.members.me.voice.channel) {
@@ -66,7 +66,7 @@ async function search({ member, guild, channel }, query) {
     await guild.client.musicManager.destroyPlayer(guild.id);
   }
   if (player && member.voice.channel !== guild.members.me.voice.channel) {
-    return "🚫 You must be in the same voice channel as mine";
+    return "😳 *susurra* Necesitas estar en el mismo canal de voz que yo... 🌸💭";
   }
 
   let res;
@@ -75,7 +75,7 @@ async function search({ member, guild, channel }, query) {
       /^https?:\/\//.test(query) ? query : `${search_prefix[MUSIC.DEFAULT_SOURCE]}:${query}`
     );
   } catch (err) {
-    return "🚫 There was an error while searching";
+    return "😖 *susurra confundida* Hubo un error al buscar... ¿podrías intentar con otro nombre? 🥺🌸";
   }
 
   let embed = new EmbedBuilder().setColor(EMBED_COLORS.BOT_EMBED);
@@ -85,10 +85,10 @@ async function search({ member, guild, channel }, query) {
   switch (loadType) {
     case "LOAD_FAILED":
       guild.client.logger.error("Search Exception", res.exception);
-      return "🚫 There was an error while searching";
+      return "😖 *susurra confundida* Hubo un error al buscar... ¿podrías intentar con otro nombre? 🥺🌸";
 
     case "NO_MATCHES":
-      return `No results found matching ${query}`;
+      return `🥺 *susurra tristemente* No encontré nada que coincida con "${query}"... ¿quizás otro nombre? 💭🌸`;
 
     case "TRACK_LOADED": {
       const [track] = res.tracks;
@@ -184,7 +184,7 @@ async function search({ member, guild, channel }, query) {
         });
 
         await sentMsg.delete();
-        if (!response) return "🚫 You took too long to select the songs";
+        if (!response) return "😥 *susurra tristemente* Te tardaste mucho en elegir las canciones... 🥺🌸";
 
         if (response.customId !== "search-results") return;
         const toAdd = [];
@@ -203,7 +203,7 @@ async function search({ member, guild, channel }, query) {
       } catch (err) {
         console.log(err);
         await sentMsg.delete();
-        return "🚫 Failed to register your response";
+        return "🥺 *se preocupa* No pude registrar tu respuesta... ¿intentamos de nuevo? 💭🌸";
       }
     }
   }

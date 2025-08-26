@@ -32,7 +32,7 @@ module.exports = {
   async messageRun(message, args) {
     const input = args.join(" ");
 
-    if (!input) return message.safeReply("Please provide code to eval");
+    if (!input) return message.safeReply("🥺 *susurra tímidamente* ¿Podrías darme algo de código para evaluar? 💭🌸");
 
     let response;
     try {
@@ -63,7 +63,7 @@ const buildSuccessResponse = (output, client) => {
   output = require("util").inspect(output, { depth: 0 }).replaceAll(client.token, DUMMY_TOKEN);
 
   const embed = new EmbedBuilder()
-    .setAuthor({ name: "📤 Output" })
+    .setAuthor({ name: "✨ Resultado kawaii" })
     .setDescription("```js\n" + (output.length > 4096 ? `${output.substr(0, 4000)}...` : output) + "\n```")
     .setColor("Random")
     .setTimestamp(Date.now());
@@ -74,7 +74,7 @@ const buildSuccessResponse = (output, client) => {
 const buildErrorResponse = (err) => {
   const embed = new EmbedBuilder();
   embed
-    .setAuthor({ name: "📤 Error" })
+    .setAuthor({ name: "🥺 Error (lo siento~)" })
     .setDescription("```js\n" + (err.length > 4096 ? `${err.substr(0, 4000)}...` : err) + "\n```")
     .setColor(EMBED_COLORS.ERROR)
     .setTimestamp(Date.now());

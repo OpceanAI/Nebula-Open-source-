@@ -40,7 +40,7 @@ module.exports = {
 };
 
 async function importInvites({ guild }, user) {
-  if (user && user.bot) return "Oops! You cannot import invites for bots";
+  if (user && user.bot) return "🥺 *susurra* No puedo importar invitaciones para bots... 💭🌸";
 
   const invites = await guild.invites.fetch({ cache: false });
 
@@ -63,5 +63,5 @@ async function importInvites({ guild }, user) {
     await memberDb.save();
   }
 
-  return `Done! Previous invites added to ${user ? user.username : "all members"}`;
+  return `✨ *susurra feliz* ¡Listo! Invitaciones anteriores añadidas a ${user ? user.username : "todos los miembros"}~ 🌸💫`;
 }

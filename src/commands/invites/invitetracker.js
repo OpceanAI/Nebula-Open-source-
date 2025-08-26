@@ -39,7 +39,7 @@ module.exports = {
 
   async messageRun(message, args, data) {
     const status = args[0].toLowerCase();
-    if (!["on", "off"].includes(status)) return message.safeReply("Invalid status. Value must be `on/off`");
+    if (!["on", "off"].includes(status)) return message.safeReply("🥺 *susurra confundida* Estado inválido... debe ser `on/off` 💭🌸");
     const response = await setStatus(message, status, data.settings);
     await message.safeReply(response);
   },
@@ -56,7 +56,7 @@ async function setStatus({ guild }, input, settings) {
 
   if (status) {
     if (!guild.members.me.permissions.has(["ManageGuild", "ManageChannels"])) {
-      return "Oops! I am missing `Manage Server`, `Manage Channels` permission!\nI cannot track invites";
+      return "😳 *se esconde* Me faltan permisos de `Administrar Servidor` y `Administrar Canales`...\nNo puedo rastrear invitaciones 🥺🌸";
     }
 
     const channelMissing = guild.channels.cache
@@ -77,5 +77,5 @@ async function setStatus({ guild }, input, settings) {
   settings.invite.tracking = status;
   await settings.save();
 
-  return `Configuration saved! Invite tracking is now ${status ? "enabled" : "disabled"}`;
+  return `✨ *susurra emocionada* ¡Configuración guardada! El rastreo de invitaciones ahora está ${status ? "activado" : "desactivado"} 🌸💫`;
 }

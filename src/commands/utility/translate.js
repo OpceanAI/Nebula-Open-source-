@@ -56,7 +56,7 @@ module.exports = {
     }
 
     const input = args.join(" ");
-    if (!input) message.safeReply("💭 *susurra tímidamente* ¿Podrías darme algo de texto para traducir? No puedo traducir el vacío~ 🥺🌸");
+    if (!input) return message.safeReply("💭 *susurra tímidamente* ¿Podrías darme algo de texto para traducir? No puedo traducir el vacío~ 🥺🌸");
 
     const response = await getTranslation(message.author, input, outputCode);
     await message.safeReply(response);
@@ -76,7 +76,7 @@ async function getTranslation(author, input, outputCode) {
 
   const embed = new EmbedBuilder()
     .setAuthor({
-      name: `${author.username} says`,
+      name: `✨ ${author.username} dice~`,
       iconURL: author.avatarURL(),
     })
     .setColor(EMBED_COLORS.BOT_EMBED)

@@ -44,33 +44,33 @@ module.exports = {
 
 async function pokedex(pokemon) {
   const response = await getJson(`https://pokeapi.glitch.me/v1/pokemon/${pokemon}`);
-  if (response.status === 404) return "```The given pokemon is not found```";
+  if (response.status === 404) return "🥺 *susurra tristemente* No encontré ese Pokémon... ¿podrías verificar el nombre? 💭🌸";
   if (!response.success) return MESSAGES.API_ERROR;
 
   const json = response.data[0];
 
   const embed = new EmbedBuilder()
-    .setTitle(`Pokédex - ${json.name}`)
+    .setTitle(`🌸 Pokédex Kawaii - ${json.name} ✨`)
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setThumbnail(json.sprite)
     .setDescription(
       stripIndent`
-            ♢ **ID**: ${json.number}
-            ♢ **Name**: ${json.name}
-            ♢ **Species**: ${json.species}
-            ♢ **Type(s)**: ${json.types}
-            ♢ **Abilities(normal)**: ${json.abilities.normal}
-            ♢ **Abilities(hidden)**: ${json.abilities.hidden}
-            ♢ **Egg group(s)**: ${json.eggGroups}
-            ♢ **Gender**: ${json.gender}
-            ♢ **Height**: ${json.height} foot tall
-            ♢ **Weight**: ${json.weight}
-            ♢ **Current Evolution Stage**: ${json.family.evolutionStage}
-            ♢ **Evolution Line**: ${json.family.evolutionLine}
-            ♢ **Is Starter?**: ${json.starter}
-            ♢ **Is Legendary?**: ${json.legendary}
-            ♢ **Is Mythical?**: ${json.mythical}
-            ♢ **Is Generation?**: ${json.gen}
+            🏷️ **ID**: ${json.number}
+            🌸 **Nombre**: ${json.name}
+            🐾 **Especie**: ${json.species}
+            ✨ **Tipo(s)**: ${json.types}
+            💫 **Habilidades**: ${json.abilities.normal}
+            😎 **Habilidades ocultas**: ${json.abilities.hidden}
+            🥚 **Grupo de huevos**: ${json.eggGroups}
+            💕 **Género**: ${json.gender}
+            📏 **Altura**: ${json.height} pies
+            ⚖️ **Peso**: ${json.weight}
+            🌱 **Evolución actual**: ${json.family.evolutionStage}
+            🔗 **Línea evolutiva**: ${json.family.evolutionLine}
+            🎆 **¿Inicial?**: ${json.starter}
+            🌟 **¿Legendario?**: ${json.legendary}
+            🧿 **¿Mítico?**: ${json.mythical}
+            🎮 **Generación**: ${json.gen}
             `
     )
     .setFooter({ text: json.description });

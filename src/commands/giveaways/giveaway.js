@@ -177,9 +177,9 @@ module.exports = {
 
     //
     if (sub === "start") {
-      if (!args[1]) return message.safeReply("Incorrect usage! Please provide a channel to start the giveaway in");
+      if (!args[1]) return message.safeReply("🥺 *susurra tímidamente* ¿Podrías mencionar un canal para empezar el sorteo? 💭🌸");
       const match = message.guild.findMatchingChannels(args[1]);
-      if (!match.length) return message.safeReply(`No channel found matching ${args[1]}`);
+      if (!match.length) return message.safeReply(`🥺 *susurra confundida* No encontré ningún canal que coincida con ${args[1]}... 💭🌸`);
       return await runModalSetup(message, match[0]);
     }
 
@@ -215,12 +215,12 @@ module.exports = {
     //
     else if (sub === "edit") {
       const messageId = args[1];
-      if (!messageId) return message.safeReply("Incorrect usage! Please provide a message id");
+      if (!messageId) return message.safeReply("🥺 *susurra tímidamente* ¿Podrías darme el ID del mensaje del sorteo? 💭🌸");
       return await runModalEdit(message, messageId);
     }
 
     //
-    else response = "Not a valid sub command";
+    else response = "🥺 *susurra confundida* Ese no es un subcomando válido... ¿podrías verificar? 💭🌸";
 
     await message.safeReply(response);
   },
@@ -232,7 +232,7 @@ module.exports = {
     //
     if (sub === "start") {
       const channel = interaction.options.getChannel("channel");
-      await interaction.followUp("Starting Giveaway system...");
+      await interaction.followUp("✨ *susurra emocionada* ¡Empezando el sistema de sorteos! 🌸💫");
       return await runModalSetup(interaction, channel);
     }
 
@@ -271,7 +271,7 @@ module.exports = {
       const addDur = interaction.options.getInteger("add_duration");
       const addDurationMs = addDur ? ems(addDur) : null;
       if (!addDurationMs) {
-        return interaction.followUp("Not a valid duration");
+        return interaction.followUp("🥺 *susurra confundida* Esa no es una duración válida... 💭🌸");
       }
       const newPrize = interaction.options.getString("new_prize");
       const newWinnerCount = interaction.options.getInteger("new_winners");
@@ -279,7 +279,7 @@ module.exports = {
     }
 
     //
-    else response = "Invalid subcommand";
+    else response = "🥺 *susurra confundida* Subcomando inválido... ¿podrías verificar? 💭🌸";
 
     await interaction.followUp(response);
   },
@@ -294,7 +294,7 @@ async function runModalSetup({ member, channel, guild }, targetCh) {
   const SETUP_PERMS = ["ViewChannel", "SendMessages", "EmbedLinks"];
 
   // validate channel perms
-  if (!targetCh) return channel.safeSend("Giveaway setup has been cancelled. You did not mention a channel");
+  if (!targetCh) return channel.safeSend("🥺 *susurra tristemente* El setup del sorteo se canceló... no mencionaste un canal~ 💭🌸");
   if (!targetCh.type === ChannelType.GuildText && !targetCh.permissionsFor(guild.members.me).has(SETUP_PERMS)) {
     return channel.safeSend(
       `Giveaway setup has been cancelled.\nI need ${parsePermissions(SETUP_PERMS)} in ${targetCh}`
@@ -302,11 +302,11 @@ async function runModalSetup({ member, channel, guild }, targetCh) {
   }
 
   const buttonRow = new ActionRowBuilder().addComponents(
-    new ButtonBuilder().setCustomId("giveaway_btnSetup").setLabel("Setup Giveaway").setStyle(ButtonStyle.Primary)
+    new ButtonBuilder().setCustomId("giveaway_btnSetup").setLabel("✨ Configurar Sorteo").setStyle(ButtonStyle.Primary)
   );
 
   const sentMsg = await channel.safeSend({
-    content: "Please click the button below to setup new giveaway",
+    content: "🌸 *susurra tímidamente* Haz clic en el botón para configurar un nuevo sorteo~ ✨",
     components: [buttonRow],
   });
 

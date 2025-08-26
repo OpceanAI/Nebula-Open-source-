@@ -45,63 +45,63 @@ module.exports = {
 async function getCovid(country) {
   const response = await getJson(`https://disease.sh/v2/countries/${country}`);
 
-  if (response.status === 404) return "```css\nCountry with the provided name is not found```";
+  if (response.status === 404) return "🥺 *susurra tristemente* No encontré ese país... ¿podrías verificar el nombre? 💭🌸";
   if (!response.success) return MESSAGES.API_ERROR;
   const { data } = response;
 
   const mg = timestampToDate(data?.updated, "dd.MM.yyyy at HH:mm");
   const embed = new EmbedBuilder()
-    .setTitle(`Covid - ${data?.country}`)
+    .setTitle(`🌸 Covid - ${data?.country} ✨`)
     .setThumbnail(data?.countryInfo.flag)
     .setColor(EMBED_COLORS.BOT_EMBED)
     .addFields(
       {
-        name: "Cases Total",
+        name: "📈 Casos Totales",
         value: data?.cases.toString(),
         inline: true,
       },
       {
-        name: "Cases Today",
+        name: "📅 Casos Hoy",
         value: data?.todayCases.toString(),
         inline: true,
       },
       {
-        name: "Deaths Total",
+        name: "🕊 Muertes Totales",
         value: data?.deaths.toString(),
         inline: true,
       },
       {
-        name: "Deaths Today",
+        name: "📅 Muertes Hoy",
         value: data?.todayDeaths.toString(),
         inline: true,
       },
       {
-        name: "Recovered",
+        name: "🌱 Recuperados",
         value: data?.recovered.toString(),
         inline: true,
       },
       {
-        name: "Active",
+        name: "⚡ Activos",
         value: data?.active.toString(),
         inline: true,
       },
       {
-        name: "Critical",
+        name: "🔴 Críticos",
         value: data?.critical.toString(),
         inline: true,
       },
       {
-        name: "Cases per 1 million",
+        name: "📈 Casos por millón",
         value: data?.casesPerOneMillion.toString(),
         inline: true,
       },
       {
-        name: "Deaths per 1 million",
+        name: "🕊 Muertes por millón",
         value: data?.deathsPerOneMillion.toString(),
         inline: true,
       }
     )
-    .setFooter({ text: `Last updated on ${mg}` });
+    .setFooter({ text: `🌸 *susurra* Última actualización: ${mg} ✨` });
 
   return { embeds: [embed] };
 }

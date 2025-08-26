@@ -57,27 +57,27 @@ async function urban(word) {
     .setDescription(`🌸 *susurra* Encontré esta definición para ti~ \n**Definición:**\`\`\`css\n${data.definition}\`\`\``)
     .addFields(
       {
-        name: "Author",
+        name: "📝 Autor",
         value: data.author,
         inline: true,
       },
       {
-        name: "ID",
+        name: "🏷️ ID",
         value: data.defid.toString(),
         inline: true,
       },
       {
-        name: "Likes / Dislikes",
+        name: "💕 Likes / Dislikes",
         value: `👍 ${data.thumbs_up} | 👎 ${data.thumbs_down}`,
         inline: true,
       },
       {
-        name: "Example",
+        name: "🌸 Ejemplo",
         value: data.example,
         inline: false,
       }
     )
-    .setFooter({ text: `Created ${moment(data.written_on).fromNow()}` });
+    .setFooter({ text: `🌸 *susurra* Creado ${moment(data.written_on).fromNow()} ✨` });
 
   return { embeds: [embed] };
 }

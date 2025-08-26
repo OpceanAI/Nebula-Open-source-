@@ -42,21 +42,21 @@ module.exports = {
 
   async messageRun(message, args) {
     const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[0]);
-    if (!channel) return message.reply("Please provide a valid channel");
-    if (channel.type !== ChannelType.GuildText) return message.reply("Please provide a valid channel");
+    if (!channel) return message.reply("🥺 *susurra tímidamente* ¿Podrías mencionar un canal válido? 💭🌸");
+    if (channel.type !== ChannelType.GuildText) return message.reply("🥺 *susurra tímidamente* ¿Podrías mencionar un canal válido? 💭🌸");
     if (!channel.canSendEmbeds()) {
-      return message.reply("I don't have permission to send embeds in that channel");
+      return message.reply("😳 *se esconde* No tengo permisos para enviar embeds en ese canal... ¿podrías darme permisos? 💭✨");
     }
-    message.reply(`Embed setup started in ${channel}`);
+    message.reply(`✨ *susurra emocionada* ¡Empecemos a crear un embed bonito en ${channel}! 🌸💫`);
     await embedSetup(channel, message.member);
   },
 
   async interactionRun(interaction) {
     const channel = interaction.options.getChannel("channel");
     if (!channel.canSendEmbeds()) {
-      return interaction.followUp("I don't have permission to send embeds in that channel");
+      return interaction.followUp("😳 *se esconde* No tengo permisos para enviar embeds en ese canal... ¿podrías darme permisos? 💭✨");
     }
-    interaction.followUp(`Embed setup started in ${channel}`);
+    interaction.followUp(`✨ *susurra emocionada* ¡Empecemos a crear un embed bonito en ${channel}! 🌸💫`);
     await embedSetup(channel, interaction.member);
   },
 };
@@ -67,10 +67,10 @@ module.exports = {
  */
 async function embedSetup(channel, member) {
   const sentMsg = await channel.send({
-    content: "Click the button below to get started",
+    content: "🌸 *susurra tímidamente* Haz clic en el botón para empezar a crear tu embed~ ✨",
     components: [
       new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setCustomId("EMBED_ADD").setLabel("Create Embed").setStyle(ButtonStyle.Primary)
+        new ButtonBuilder().setCustomId("EMBED_ADD").setLabel("✨ Crear Embed").setStyle(ButtonStyle.Primary)
       ),
     ],
   });
@@ -83,45 +83,45 @@ async function embedSetup(channel, member) {
     })
     .catch((ex) => {});
 
-  if (!btnInteraction) return sentMsg.edit({ content: "No response received", components: [] });
+  if (!btnInteraction) return sentMsg.edit({ content: "🥺 *susurra tristemente* No recibí respuesta... cancelando~ 💭🌸", components: [] });
 
   await btnInteraction.showModal(
     new ModalBuilder({
       customId: "EMBED_MODAL",
-      title: "Embed Generator",
+      title: "✨ Generador de Embed Kawaii",
       components: [
         new ActionRowBuilder().addComponents(
           new TextInputBuilder()
             .setCustomId("title")
-            .setLabel("Embed Title")
+            .setLabel("Título del Embed")
             .setStyle(TextInputStyle.Short)
             .setRequired(false)
         ),
         new ActionRowBuilder().addComponents(
           new TextInputBuilder()
             .setCustomId("author")
-            .setLabel("Embed Author")
+            .setLabel("Autor del Embed")
             .setStyle(TextInputStyle.Short)
             .setRequired(false)
         ),
         new ActionRowBuilder().addComponents(
           new TextInputBuilder()
             .setCustomId("description")
-            .setLabel("Embed Description")
+            .setLabel("Descripción del Embed")
             .setStyle(TextInputStyle.Paragraph)
             .setRequired(false)
         ),
         new ActionRowBuilder().addComponents(
           new TextInputBuilder()
             .setCustomId("color")
-            .setLabel("Embed Color")
+            .setLabel("Color del Embed")
             .setStyle(TextInputStyle.Short)
             .setRequired(false)
         ),
         new ActionRowBuilder().addComponents(
           new TextInputBuilder()
             .setCustomId("footer")
-            .setLabel("Embed Footer")
+            .setLabel("Pie del Embed")
             .setStyle(TextInputStyle.Short)
             .setRequired(false)
         ),
@@ -137,9 +137,9 @@ async function embedSetup(channel, member) {
     })
     .catch((ex) => {});
 
-  if (!modal) return sentMsg.edit({ content: "No response received, cancelling setup", components: [] });
+  if (!modal) return sentMsg.edit({ content: "🥺 *susurra tristemente* No recibí respuesta... cancelando la configuración~ 💭🌸", components: [] });
 
-  modal.reply({ content: "Embed sent", ephemeral: true }).catch((ex) => {});
+  modal.reply({ content: "✨ *susurra feliz* ¡Embed enviado exitosamente! 🌸💫", ephemeral: true }).catch((ex) => {});
 
   const title = modal.fields.getTextInputValue("title");
   const author = modal.fields.getTextInputValue("author");
@@ -148,7 +148,7 @@ async function embedSetup(channel, member) {
   const color = modal.fields.getTextInputValue("color");
 
   if (!title && !author && !description && !footer)
-    return sentMsg.edit({ content: "You can't send an empty embed!", components: [] });
+    return sentMsg.edit({ content: "🥺 *susurra confundida* ¡No puedes enviar un embed vacío! Necesitas al menos un campo lleno~ 💭🌸", components: [] });
 
   const embed = new EmbedBuilder();
   if (title) embed.setTitle(title);

@@ -55,23 +55,23 @@ async function weather(place) {
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setThumbnail(json.current?.weather_icons[0])
     .addFields(
-      { name: "City", value: json.location?.name || "NA", inline: true },
-      { name: "Region", value: json.location?.region || "NA", inline: true },
-      { name: "Country", value: json.location?.country || "NA", inline: true },
-      { name: "Weather condition", value: json.current?.weather_descriptions[0] || "NA", inline: true },
-      { name: "Date", value: json.location?.localtime.slice(0, 10) || "NA", inline: true },
-      { name: "Time", value: json.location?.localtime.slice(11, 16) || "NA", inline: true },
-      { name: "Temperature", value: `${json.current?.temperature}°C`, inline: true },
-      { name: "CloudCover", value: `${json.current?.cloudcover}%`, inline: true },
-      { name: "Wind Speed", value: `${json.current?.wind_speed} km/h`, inline: true },
-      { name: "Wind Direction", value: json.current?.wind_dir || "NA", inline: true },
-      { name: "Pressure", value: `${json.current?.pressure} mb`, inline: true },
-      { name: "Precipitation", value: `${json.current?.precip.toString()} mm`, inline: true },
-      { name: "Humidity", value: json.current?.humidity.toString() || "NA", inline: true },
-      { name: "Visual Distance", value: `${json.current?.visibility} km`, inline: true },
-      { name: "UV Index", value: json.current?.uv_index.toString() || "NA", inline: true }
+      { name: "🏙️ Ciudad", value: json.location?.name || "NA", inline: true },
+      { name: "🗺️ Región", value: json.location?.region || "NA", inline: true },
+      { name: "🌍 País", value: json.location?.country || "NA", inline: true },
+      { name: "🌤️ Condición", value: json.current?.weather_descriptions[0] || "NA", inline: true },
+      { name: "📅 Fecha", value: json.location?.localtime.slice(0, 10) || "NA", inline: true },
+      { name: "🕐 Hora", value: json.location?.localtime.slice(11, 16) || "NA", inline: true },
+      { name: "🌡️ Temperatura", value: `${json.current?.temperature}°C`, inline: true },
+      { name: "☁️ Nubes", value: `${json.current?.cloudcover}%`, inline: true },
+      { name: "💨 Viento", value: `${json.current?.wind_speed} km/h`, inline: true },
+      { name: "🧭 Dirección", value: json.current?.wind_dir || "NA", inline: true },
+      { name: "🔽 Presión", value: `${json.current?.pressure} mb`, inline: true },
+      { name: "🌧️ Precipitación", value: `${json.current?.precip.toString()} mm`, inline: true },
+      { name: "💧 Humedad", value: json.current?.humidity.toString() || "NA", inline: true },
+      { name: "👁️ Visibilidad", value: `${json.current?.visibility} km`, inline: true },
+      { name: "☀️ Índice UV", value: json.current?.uv_index.toString() || "NA", inline: true }
     )
-    .setFooter({ text: `Last checked at ${json.current?.observation_time} GMT` });
+    .setFooter({ text: `🌸 *susurra* Última actualización: ${json.current?.observation_time} GMT ✨` });
 
   return { embeds: [embed] };
 }

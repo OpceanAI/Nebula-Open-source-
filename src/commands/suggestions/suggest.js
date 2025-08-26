@@ -68,16 +68,16 @@ async function suggest(member, suggestion, settings) {
       stripIndent`
         ${suggestion}
 
-        **Submitter** 
+        **🌸 Sugerido por** 
         ${member.user.username} [${member.id}]
       `
     )
     .setTimestamp();
 
   let buttonsRow = new ActionRowBuilder().addComponents(
-    new ButtonBuilder().setCustomId("SUGGEST_APPROVE").setLabel("Approve").setStyle(ButtonStyle.Success),
-    new ButtonBuilder().setCustomId("SUGGEST_REJECT").setLabel("Reject").setStyle(ButtonStyle.Danger),
-    new ButtonBuilder().setCustomId("SUGGEST_DELETE").setLabel("Delete").setStyle(ButtonStyle.Secondary)
+    new ButtonBuilder().setCustomId("SUGGEST_APPROVE").setLabel("✨ Aprobar").setStyle(ButtonStyle.Success),
+    new ButtonBuilder().setCustomId("SUGGEST_REJECT").setLabel("😖 Rechazar").setStyle(ButtonStyle.Danger),
+    new ButtonBuilder().setCustomId("SUGGEST_DELETE").setLabel("🗑️ Eliminar").setStyle(ButtonStyle.Secondary)
   );
 
   try {
@@ -94,6 +94,6 @@ async function suggest(member, suggestion, settings) {
     return true;
   } catch (ex) {
     member.client.logger.error("suggest", ex);
-    return "Failed to send message to suggestions channel!";
+    return "🥺 *se esconde* No pude enviar el mensaje al canal de sugerencias... 💭🌸";
   }
 }

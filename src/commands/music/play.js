@@ -99,7 +99,7 @@ async function play({ member, guild, channel }, query) {
           break;
 
         default:
-          return "🚫 An error occurred while searching for the song";
+          return "🥺 *se esconde* Algo salió mal al buscar esa canción... ¿intentamos con otra? 💭🌸";
       }
 
       if (!tracks) guild.client.logger.debug({ query, item });
@@ -110,10 +110,10 @@ async function play({ member, guild, channel }, query) {
       switch (res.loadType) {
         case "LOAD_FAILED":
           guild.client.logger.error("Search Exception", res.exception);
-          return "🚫 There was an error while searching";
+          return "😖 *susurra confundida* Hubo un error al buscar... ¿podrías intentar con otro nombre? 🥺🌸";
 
         case "NO_MATCHES":
-          return `No results found matching ${query}`;
+          return `🥺 *susurra tristemente* No encontré nada que coincida con "${query}"... ¿quizás otro nombre? 💭🌸`;
 
         case "PLAYLIST_LOADED":
           tracks = res.tracks;
@@ -129,17 +129,17 @@ async function play({ member, guild, channel }, query) {
 
         default:
           guild.client.logger.debug("Unknown loadType", res);
-          return "🚫 An error occurred while searching for the song";
+          return "🥺 *se esconde* Algo salió mal al buscar esa canción... ¿intentamos con otra? 💭🌸";
       }
 
       if (!tracks) guild.client.logger.debug({ query, res });
     }
   } catch (error) {
     guild.client.logger.error("Search Exception", typeof error === "object" ? JSON.stringify(error) : error);
-    return "🚫 An error occurred while searching for the song";
+    return "😟 *se preocupa* Algo salió mal al buscar... ¿podríamos intentar de nuevo? 🥺🌸";
   }
 
-  if (!tracks) return "🚫 An error occurred while searching for the song";
+  if (!tracks) return "😟 *se preocupa* Algo salió mal al buscar... ¿podríamos intentar de nuevo? 🥺🌸";
 
   if (tracks.length === 1) {
     const track = tracks[0];

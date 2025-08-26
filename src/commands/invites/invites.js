@@ -41,28 +41,28 @@ module.exports = {
 };
 
 async function getInvites({ guild }, user, settings) {
-  if (!settings.invite.tracking) return `Invite tracking is disabled in this server`;
+  if (!settings.invite.tracking) return `🥺 *susurra* El seguimiento de invitaciones está desactivado en este servidor... 💭🌸`;
 
   const inviteData = (await getMember(guild.id, user.id)).invite_data;
 
   const embed = new EmbedBuilder()
-    .setAuthor({ name: `Invites for ${user.username}` })
+    .setAuthor({ name: `🌸 Invitaciones de ${user.username} ✨` })
     .setColor(EMBED_COLORS.BOT_EMBED)
     .setThumbnail(user.displayAvatarURL())
-    .setDescription(`${user.toString()} has ${getEffectiveInvites(inviteData)} invites`)
+    .setDescription(`🌸 *susurra emocionada* ${user.toString()} tiene ${getEffectiveInvites(inviteData)} invitaciones~ ✨`)
     .addFields(
       {
-        name: "Total Invites",
+        name: "🎆 Total de Invitaciones",
         value: `**${inviteData?.tracked + inviteData?.added || 0}**`,
         inline: true,
       },
       {
-        name: "Fake Invites",
+        name: "🙅 Invitaciones Falsas",
         value: `**${inviteData?.fake || 0}**`,
         inline: true,
       },
       {
-        name: "Left Invites",
+        name: "💭 Invitaciones que se fueron",
         value: `**${inviteData?.left || 0}**`,
         inline: true,
       }
