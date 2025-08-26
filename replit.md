@@ -2,7 +2,6 @@
 
 ## Overview
 
-Successfully cloned the Discord.js bot repository from https://github.com/saiteja-madha/discord-js-bot.git. This is a comprehensive multipurpose Discord bot with:
 
 - 133+ commands across 42 categories
 - Built-in dashboard functionality
