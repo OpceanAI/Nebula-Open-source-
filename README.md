@@ -641,5 +641,9 @@ Usa la [plantilla de issues](.github/ISSUE_TEMPLATE/bug_report.md) para reportar
 **🌙 *susurra tímidamente* Este es NEBULA, un bot open source basado en el framework desarrollado por OpceanAI uwu~ ✨**
 
 *🥺 Bot kawaii tímida con más de 133+ comandos y personalidad adorable 💫*
+```
+# 🌐puedes hacerlo con Docker 
 
+docker compose up -d
+```
 </div>
